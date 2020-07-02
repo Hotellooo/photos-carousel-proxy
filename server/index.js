@@ -29,17 +29,21 @@ app.all('/api/calendar/update/', (req, res) => {
 });
 
 // PHOTO CAROUSEL
-app.all('/carousel/*', (req, res) => {
-  console.log('redirecting to carousel');
-  apiProxy.web(req, res, { target: carousel, changeOrigin: true });
-});
-app.all('/api/*', (req, res) => {
-  console.log('redirecting to carousel');
-  apiProxy.web(req, res, { target: carousel, changeOrigin: true });
+// app.all('/carousel/*', (req, res) => {
+//   console.log('redirecting to carousel');
+//   apiProxy.web(req, res, { target: carousel, changeOrigin: true });
+// });
+// app.all('/api/:hotelID/photos', (req, res) => {
+//   console.log('redirecting to carousel');
+//   apiProxy.web(req, res, { target: carousel, changeOrigin: true });
+// });
+app.all('/api/:hotelId/photos', (req, res) => {
+  console.log('redirecting to photos-carousel server');
+  apiProxy.web(req, res, {target: carousel, changeOrigin: true});
 });
 
 // ABOUT
-app.all('/about/*', (req, res) => {
+app.all('/api/photos/*', (req, res) => {
   console.log('redirecting to about');
   apiProxy.web(req, res, { target: about, changeOrigin: true });
 });
